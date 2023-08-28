@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.css';
 import {useState, useEffect} from "react";
 import Launches from "./components/Launches";
 import {Button, Container} from "@mui/material";
@@ -124,19 +124,20 @@ function App() {
         fetchData(currentPage - 1)
     }
 
+    console.log(data)
+
     return (
         <div>
 
-            <Container>
-                <p>Total Launches: {data["totalDocs"]}</p>
+            <Container style={{ maxWidth: "1050px" }}>
                 {data["docs"] ? (
                     <div>
                         <Launches launches={data["docs"]}/>
-                        <p>Page {data["page"]} / {data["totalPages"]} </p>
-                        <Button variant="outlined" onClick={prevPage} disabled={currentPage === 1}>Prev Page</Button>
-                        <Button variant="outlined" onClick={nextPage} disabled={currentPage === data["totalPages"]}>Next
-                           Page</Button>
-
+                        <div className="pageDiv">
+                            <p>{data["totalDocs"]} launches - Page {data["page"]} / {data["totalPages"]}</p>
+                            <Button variant="contained" onClick={prevPage} disabled={currentPage === 1}>Previous</Button>
+                            <Button variant="contained" onClick={nextPage} disabled={currentPage === data["totalPages"]}>Next</Button>
+                        </div>
                    </div>
                 ) : (
                     <div>Loading...</div>

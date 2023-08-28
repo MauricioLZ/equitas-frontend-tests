@@ -1,6 +1,12 @@
 .page{
     height: 150px;
-    width:350px;
+    width: 300px;
     text-align: center;
-    padding-top: 10px;
+    padding: 10px;
+    background-color: #E0E0E0 !important;
+    border: 3px solid #E0E0E0;
+}
+
+.page:hover {
+    border: 3px solid #0E076E;
 }
